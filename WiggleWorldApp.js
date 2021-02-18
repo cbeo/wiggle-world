@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "36";
+	app.meta.h["build"] = "37";
 	app.meta.h["company"] = "Toyful Space";
 	app.meta.h["file"] = "WiggleWorldApp";
 	app.meta.h["name"] = "WiggleWorldApp";
@@ -5299,6 +5299,15 @@ SplashScreen.prototype = $extend(openfl_display_Sprite.prototype,{
 			w.set_y(wiggler.y * vertScale);
 			this.addChild(w);
 		}
+		var tf = new openfl_text_TextFormat("monospaced",20,16777215,true);
+		var field1 = new openfl_text_TextField();
+		field1.set_text("Draw Shapes Then Watch Them Wiggle! Click to begin.");
+		field1.setTextFormat(tf);
+		field1.set_width(field1.get_textWidth());
+		field1.set_height(field1.get_textHeight());
+		field1.set_y(this.stage.stageHeight - (field1.get_height() + 10));
+		field1.set_x((this.stage.stageWidth - field1.get_width()) / 2);
+		this.addChild(field1);
 	}
 	,__class__: SplashScreen
 });
@@ -24121,7 +24130,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 962906;
+	this.version = 725682;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
