@@ -4251,18 +4251,6 @@ var Wiggler = function(path,staticWigglerMode) {
 	this.renderPhases = [RenderPhase.Circles,RenderPhase.Border];
 	this.addEventListener("enterFrame",$bind(this,this.perFrame));
 	Wiggler.allWigglers.push(this);
-	if(!this.staticWiggler) {
-		var bonecount = 0;
-		var v = this.bones.iterator();
-		while(v.hasNext()) {
-			var v1 = v.next();
-			++bonecount;
-		}
-		if(bonecount == 0) {
-			this.destroyInitiated = true;
-			motion_Actuate.timer(0.5).onComplete($bind(this,this.destroy));
-		}
-	}
 };
 $hxClasses["Wiggler"] = Wiggler;
 Wiggler.__name__ = "Wiggler";
@@ -24133,7 +24121,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 474662;
+	this.version = 962906;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
