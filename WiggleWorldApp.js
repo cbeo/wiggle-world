@@ -869,7 +869,7 @@ ApplicationMain.main = function() {
 ApplicationMain.create = function(config) {
 	var app = new openfl_display_Application();
 	ManifestResources.init(config);
-	app.meta.h["build"] = "37";
+	app.meta.h["build"] = "44";
 	app.meta.h["company"] = "Toyful Space";
 	app.meta.h["file"] = "WiggleWorldApp";
 	app.meta.h["name"] = "WiggleWorldApp";
@@ -4224,6 +4224,22 @@ var RenderPhase = $hxEnums["RenderPhase"] = { __ename__ : "RenderPhase", __const
 	,Clusters: {_hx_index:1,__enum__:"RenderPhase",toString:$estr}
 	,Border: {_hx_index:2,__enum__:"RenderPhase",toString:$estr}
 };
+var openfl_display_Shape = function() {
+	openfl_display_DisplayObject.call(this);
+};
+$hxClasses["openfl.display.Shape"] = openfl_display_Shape;
+openfl_display_Shape.__name__ = "openfl.display.Shape";
+openfl_display_Shape.__super__ = openfl_display_DisplayObject;
+openfl_display_Shape.prototype = $extend(openfl_display_DisplayObject.prototype,{
+	get_graphics: function() {
+		if(this.__graphics == null) {
+			this.__graphics = new openfl_display_Graphics(this);
+		}
+		return this.__graphics;
+	}
+	,__class__: openfl_display_Shape
+	,__properties__: $extend(openfl_display_DisplayObject.prototype.__properties__,{get_graphics:"get_graphics"})
+});
 var Wiggler = function(path,staticWigglerMode) {
 	if(staticWigglerMode == null) {
 		staticWigglerMode = false;
@@ -4242,7 +4258,7 @@ var Wiggler = function(path,staticWigglerMode) {
 	this.circles = [];
 	this.path = [];
 	this.staticWiggler = true;
-	openfl_display_Sprite.call(this);
+	openfl_display_Shape.call(this);
 	this.staticWiggler = staticWigglerMode;
 	this.path = Util.translatePathToOrigin(path);
 	this.addCircles();
@@ -4275,8 +4291,8 @@ Wiggler.boneIntersectsNeighbors = function(hinge,node,nodes) {
 	}
 	return false;
 };
-Wiggler.__super__ = openfl_display_Sprite;
-Wiggler.prototype = $extend(openfl_display_Sprite.prototype,{
+Wiggler.__super__ = openfl_display_Shape;
+Wiggler.prototype = $extend(openfl_display_Shape.prototype,{
 	intersects: function(other) {
 		if(this == other) {
 			return false;
@@ -24130,7 +24146,7 @@ var lime_utils_AssetCache = function() {
 	this.audio = new haxe_ds_StringMap();
 	this.font = new haxe_ds_StringMap();
 	this.image = new haxe_ds_StringMap();
-	this.version = 725682;
+	this.version = 530499;
 };
 $hxClasses["lime.utils.AssetCache"] = lime_utils_AssetCache;
 lime_utils_AssetCache.__name__ = "lime.utils.AssetCache";
@@ -37405,22 +37421,6 @@ openfl_display_ShaderPrecision.toString = function(this1) {
 		return null;
 	}
 };
-var openfl_display_Shape = function() {
-	openfl_display_DisplayObject.call(this);
-};
-$hxClasses["openfl.display.Shape"] = openfl_display_Shape;
-openfl_display_Shape.__name__ = "openfl.display.Shape";
-openfl_display_Shape.__super__ = openfl_display_DisplayObject;
-openfl_display_Shape.prototype = $extend(openfl_display_DisplayObject.prototype,{
-	get_graphics: function() {
-		if(this.__graphics == null) {
-			this.__graphics = new openfl_display_Graphics(this);
-		}
-		return this.__graphics;
-	}
-	,__class__: openfl_display_Shape
-	,__properties__: $extend(openfl_display_DisplayObject.prototype.__properties__,{get_graphics:"get_graphics"})
-});
 var openfl_display_SimpleButton = function(upState,overState,downState,hitTestState) {
 	openfl_display_InteractiveObject.call(this);
 	this.enabled = true;
